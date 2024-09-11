@@ -1,0 +1,10 @@
+9788493801311;El Corredor del Laberinto;James Dashner
+9780307277671;El Jardin de atras;Ines
+9780439023481;Los Juegos del Hambre;Suzanne Collins
+9780141182803;1984;George Orwell
+9780061120084;Matar a un ruiseñor;Harper Lee
+9780743273565;El Gran Gatsby;F. Scott Fitzgerald
+9780553283686;Dune;Frank Herbert
+9781501175466;It;Stephen King
+9780142437230;Moby Dick;Herman Melville
+9780679783268;Orgullo y Prejuicio;Jane Austen
