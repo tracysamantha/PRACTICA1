@@ -16,7 +16,7 @@ public class Libro {
     private String sipnosis;
     private String Genero;
 
-    public Libro(String ISBN, String titulo, String autor) {
+    public Libro(String ISBN, String titulo, String autor, String sipnosis, String Genero) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.autor = autor;

@@ -4,17 +4,38 @@
  */
 package Gui;
 
+import ejercicio1poo2.Autor;
+import ejercicio1poo2.Biblioteca;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author tracy
  */
 public class JFrameBuscarLibro extends javax.swing.JFrame {
 
+    private Biblioteca biblioteca;
+
     /**
      * Creates new form JFrameBuscarLibro
      */
     public JFrameBuscarLibro() {
         initComponents();
+        biblioteca = new Biblioteca();
+        cargarAutores();
+    }
+
+    private void cargarAutores() {
+        JcomBAutor.removeAllItems();
+        for (Autor autor : biblioteca.getAutores()) {
+            JcomBAutor.addItem(autor.getNombre());
+        }
+
     }
 
     /**
@@ -221,8 +242,26 @@ public class JFrameBuscarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonCFantasiaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String ISBN = txtISBN.getText();
+        String titulo = txtTitulo.getText();
+        String autor = (String) JcomBAutor.getSelectedItem();
+        String sipnosis = TextASipnosis.getText();
+        String genero = obtenerGenero();
+        biblioteca.crearLibro(ISBN, titulo, autor, sipnosis, genero);
+        JOptionPane.showMessageDialog(this, "Libro guardado con éxito.");
     }//GEN-LAST:event_jButton2ActionPerformed
+    private String obtenerGenero() {
+        if (jRadioButtonTerror.isSelected()) {
+            return "Terror";
+        } else if (jRadioButtonRomance.isSelected()) {
+            return "Romance";
+        } else if (jRadioButtonCFiccion.isSelected()) {
+            return "Ciencia ficción";
+        } else if (jRadioButtonCFantasia.isSelected()) {
+            return "Fantasía";
+        }
+        return "Desconocido";
+    }
 
     /**
      * @param args the command line arguments

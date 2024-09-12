@@ -12,7 +12,8 @@ public class Autor {
 
     private String nombre;
 
-    public Autor(String nombre) {
+    public Autor(String nombre) {//constructor crea instancia en laclase autor para inciializar el atributo nombre
+        
         this.nombre = nombre;
     }
 

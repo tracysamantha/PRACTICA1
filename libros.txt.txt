@@ -1,0 +1,4 @@
+1234567890;Cien Años de Soledad;Gabriel García Márquez;Novela sobre la familia Buendía;Ficción
+9876543210;Harry Potter;J.K. Rowling;Historia de un joven mago;Fantasía
+5432109876;El resplandor;Stephen King;Historia de terror psicológico;Terror
+1357913579;La Casa de los Espíritus;Isabel Allende;Historia sobre una familia y sus fantasmas;Ficción

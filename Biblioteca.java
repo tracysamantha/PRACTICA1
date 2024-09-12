@@ -13,25 +13,42 @@ import java.util.*;
  */
 public class Biblioteca {
 
-    private List<Libro> libros;
+    private List<Libro> libros; //atributo privado libros para lista de objetos Libro
+    private List<Autor> autores;
+
 
     public Biblioteca() {
-        libros = new ArrayList<>();
-        cargarLibrosDesdeArchivo();  // Cargar libros desde el archivo de texto al iniciar
+        libros = new ArrayList<>(); //inicializamos el atributo libros como nueva instancia de arraylist
+        autores = new ArrayList<>(); 
+        cargarLibrosDesdeArchivo();  
+        cargarAutoresDesdeArchivo();  
     }
 
-    // Método para cargar los libros desde el archivo de texto
-    public void cargarLibrosDesdeArchivo() {
-        try (BufferedReader br = new BufferedReader(new FileReader("librosyautores.txt"))) {
+
+       public void cargarAutoresDesdeArchivo() {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\tracy\\Downloads\\autores.txt"))) { // Archivo de autores
             String linea;
             while ((linea = br.readLine()) != null) {
-                // Separar la línea en partes: ISBN, Título, Autor
-                String[] partes = linea.split(";");
-                if (partes.length == 3) {
+                autores.add(new Autor(linea.trim())); // Cargar cada autor como un nuevo objeto Autor
+            }
+            System.out.println("Autores cargados correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo de autores: " + e.getMessage());
+        }
+    }
+
+    public void cargarLibrosDesdeArchivo() { //se encarga de leer libros desde el archivo de texto y agregarlo a la lista libro 
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\tracy\\Downloads\\libros.txt"))) { 
+            String linea; //declaramos una variable linea para almacenar cada linea leida del archivo 
+            while ((linea = br.readLine()) != null) { //lee cada linea del archivo en bucle while, el bucle terminara cuando readLine devuelva null 
+                String[] partes = linea.split(";"); 
+                if (partes.length == 5) { 
                     String ISBN = partes[0];
                     String titulo = partes[1];
                     String autor = partes[2];
-                    libros.add(new Libro(ISBN, titulo, autor));  // Crear un objeto Libro y añadirlo a la lista
+                    String sipnosis = partes[3];
+                    String genero = partes[4];
+                    libros.add(new Libro(ISBN, titulo, autor, sipnosis, genero));  
                 }
             }
             System.out.println("Libros cargados correctamente.");
@@ -39,25 +56,17 @@ public class Biblioteca {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
     }
-
-    // Método para buscar un libro por ISBN
-    public void buscarLibro(String isbn) {
-        boolean encontrado = false;
-        for (Libro libro : libros) {
-            if (libro.getISBN().equals(isbn)) {
-                System.out.println("Libro encontrado: " + libro.getTitulo() + " por " + libro.getAutor());
-                encontrado = true;
-                break;
-            }
-        }
-        if (!encontrado) {
-            System.out.println("No existe el libro con ISBN " + isbn);
-        }
+     public List<Autor> getAutores() {
+        return autores;  
     }
 
-    // Método para agregar un nuevo libro y guardarlo en el archivo
-    public void crearLibro(String isbn, String titulo, String autor) {
-        libros.add(new Libro(isbn, titulo, autor));
-        
+    public List<Libro> getLibros() {
+        return libros;  
     }
-}
+
+    public void crearLibro(String ISBN, String titulo, String autor, String sipnosis, String genero) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+   }
+
